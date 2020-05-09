@@ -1,0 +1,923 @@
+{
+	"info": {
+		"_postman_id": "996048fc-de1f-414c-9029-fd07d931b2d8",
+		"name": "ProyectoSegundaMano",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear usuario segundamano v2",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c9087bad-1d33-455c-b325-59205a6ed5c8",
+						"exec": [
+							"//pm.environment.unset(\"variable_key\")",
+							"let mimail=  \"maricarmen\"+(Math.floor(Math.random()*7685)+50)+\"@hotmail.com\";",
+							"let mipassword = Math.floor(Math.random()*800000)+10000;",
+							"",
+							"console.log(\"el email\",mimail);",
+							"console.log(\"el password\",mipassword);",
+							"//pm.environment.set(\"mail\", mimail);",
+							"",
+							"let authorizationEncode = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(mimail +\":\"+ mipassword));",
+							"console.log(\"authorizationEncode\",authorizationEncode);",
+							"pm.environment.set(\"token_user\", authorizationEncode);",
+							"pm.environment.set(\"mail\", mimail);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "31bb5352-95c4-4df5-a2dd-87bd95e414b8",
+						"exec": [
+							"var response = pm.response.json();",
+							"console.log(\"Response\", response);",
+							" pm.environment.set('userAccount', response.account.account_id);",
+							" pm.environment.set('access_token', response.access_token);",
+							" pm.environment.set('name', response.account.name);",
+							" pm.environment.set('uuid', response.account.uuid);",
+							"",
+							"pm.test(\"Test - Validar que el response sea 201\", function() {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Test - Validar que el response sea un jason\", function() {",
+							"    pm.response.to.be.json;",
+							"});",
+							"",
+							"pm.test(\"Test - Validar que es response que 'email' no esté vacio\", function() {",
+							"    pm.expect(response.account.email).not.to.be.empty;",
+							"});",
+							"",
+							"pm.test(\"Test - Validar que la propiedad 'uuid' no esté vacia\", function() {",
+							"    pm.expect(response.account.uuid).not.to.be.empty;",
+							"});",
+							"",
+							"pm.test(\"Test - Validar que la propiedad 'account_id' existe y setear el user account\", function() {",
+							"  pm.expect(response.account.account_id).not.to.be.empty;",
+							" ",
+							"  //pm.variables.set('userAccount', pm.response.json().account.account_id);",
+							"  ",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{token_user}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "accept-language",
+						"value": "en-US,en;q=0.9",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"account\":{\"email\":\"{{mail}}\"}}"
+				},
+				"url": {
+					"raw": "https://{{base_url}}/nga/api/v1.1/private/accounts",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"nga",
+						"api",
+						"v1.1",
+						"private",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizas telefono de usuario",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "494b8357-5cb7-478d-9c39-e4464782d631",
+						"exec": [
+							"console.log(\"Nro Telefono\", (_.random(11111111,9999999999)) );",
+							"pm.environment.set(\"phone\", (_.random(11111111,9999999999)));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "tag:scmcoord.com,2013:api {{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "accept-language",
+						"value": "es",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"account\":{\"name\":\"{{name}}\",\"phone\":\"{{phone}}\",\"locations\":[{\"code\":\"3\",\"key\":\"region\",\"label\":\"Aguascalientes\",\"locations\":[{\"code\":\"36\",\"key\":\"municipality\",\"label\":\"Asientos\"}]}],\"professional\":false,\"phone_hidden\":false}}\n"
+				},
+				"url": {
+					"raw": "https://{{base_url}}/nga/api/v1{{userAccount}}",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"nga",
+						"api",
+						"v1{{userAccount}}"
+					],
+					"query": [
+						{
+							"key": "accept",
+							"value": "application/json, text/plain, */*",
+							"disabled": true
+						},
+						{
+							"key": "auth",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Anuncio en segundamano",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9f9be0c9-9720-4e7e-ac2f-d391251a1064",
+						"exec": [
+							"texto = Math.random().toString(36).substring(2,15)+Math.random().toString(36).substring(2,15);",
+							"const subject = \"\"+texto;",
+							"",
+							"console.log(\"Texto\", texto);",
+							"console.log(\"subject\", subject);",
+							"pm.environment.set(\"subjectAnunce\", subject);",
+							"",
+							"//var baseUrl = pm.environment.get('base_url');",
+							"//var tokenUser = pm.environment.get('token_user');",
+							"",
+							"/*let getTokenRequest = {",
+							"    method: 'POST',",
+							"    url: `https://${baseUrl}/nga/api/v1.1/private/accounts`,",
+							"    header: { ",
+							"        Authorization: tokenUser},",
+							"};",
+							"",
+							"pm.sendRequest(getTokenRequest, function(err, res){",
+							"    console.log(err ? err : res.json());",
+							"    var response = res.json();",
+							"    // theToken = response.access_token;",
+							"    //pm.environment.set('access_token', theToken);",
+							"    //pm.variables.set('access_token', theToken);",
+							"    ",
+							"});*/"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "ccece137-3e2e-4120-8f9a-93c952f148c4",
+						"exec": [
+							"var useraccount = pm.environment.get('userAccount');",
+							"var response = pm.response.json();",
+							"",
+							"pm.test(\"Test - Validar que el response sea 201\", function (){",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Test - Validar que el response sea un jason\", function(){",
+							"    pm.response.to.be.json;",
+							"});",
+							"",
+							"pm.test(\"Test - Validar que action_id contenga el id de cuenta de usuario \", function(){",
+							"    var actionIdString = response.action.action_id;",
+							"    pm.expect(actionIdString).to.include(useraccount);",
+							"});",
+							"",
+							"pm.test(\"Test - Validar que action_type sea 'new' \", function(){",
+							"   pm.expect(response.action.action_type).to.be.eq(\"new\");",
+							"});",
+							"",
+							"pm.test(\"Test - Validar que 'subject' is not empty\", function(){",
+							"    pm.expect(response.ad.subject).not.to.be.empty;",
+							"});",
+							"",
+							"pm.test(\"Test - Validar que la propiedad 'ad_id' existe y setear el valor del id del anuncio\", function() {",
+							"  pm.expect(response.ad.ad_id).not.to.be.empty;",
+							"  var adIdString = response.ad.ad_id;",
+							"  //pm.environment.set('noticeAccount', adIdString.substr(-8));",
+							"  //pm.variables.set('noticeAccount', adIdString.substr(-8));",
+							"  pm.environment.set('noticeAccount', adIdString.split('/')[5]);",
+							"  console.log(\" Ver el id del anuncio\", adIdString.split('/')[5]);",
+							"",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "tag:scmcoord.com,2013:api {{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "x-nga-source",
+						"value": "PHOENIX_DESKTOP",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"ad\":{\"locations\":[{\"code\":\"11\",\"key\":\"region\",\"label\":\"Ciudad de México\",\"locations\":[{\"code\":\"300\",\"key\":\"municipality\",\"label\":\"Miguel Hidalgo\",\"locations\":[{\"code\":\"8086\",\"key\":\"area\",\"label\":\"Anzures\"}]}]}],\"subject\":\"{{subjectAnunce}}\",\"body\":\"Servicios generales tus mascotas\",\"category\":{\"code\":\"8223\"},\"images\":[],\"price\":{\"currency\":\"mxn\",\"price_value\":18},\"ad_details\":{},\"phone_hidden\":1,\"plate\":\"\",\"vin\":\"\",\"type\":{\"code\":\"s\",\"label\":\"\"},\"ad\":\"Servicios generales tus mascotas\"},\"category_suggestion\":false,\"commit\":true}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{base_url}}/nga/api/v1.7{{userAccount}}/klfst",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"nga",
+						"api",
+						"v1.7{{userAccount}}",
+						"klfst"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizas contraseña de usuario",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "494b8357-5cb7-478d-9c39-e4464782d631",
+						"exec": [
+							"let newPassword = Math.floor(Math.random()*800000)+10000;",
+							"console.log(\"New password\",newPassword);",
+							"",
+							"pm.environment.set(\"new_password\", newPassword);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "2c66ef5e-67ed-407e-a026-2144f93c158a",
+						"exec": [
+							"var response = pm.response.json();",
+							"console.log(\"Response\", response);",
+							"pm.environment.set('access_token', response.access_token);",
+							"",
+							"var uniqueUserId = pm.environment.get('uuid');",
+							"console.log(\"El UUID\", uniqueUserId);",
+							"",
+							"var cuenta = pm.environment.get('userAccount');",
+							"console.log(\"User account\", cuenta);",
+							"",
+							"pm.test(\"Test - Validar que el response sea 200\", function (){",
+							"   setTimeout(() => {",
+							"    pm.expect(pm.response.code).to.equal(200);",
+							"    }, 3000);",
+							"});",
+							"",
+							"pm.test(\"Test - Validar que el response sea un jason\", function(){",
+							"    pm.response.to.be.json;",
+							"});",
+							"",
+							"pm.test(\"Test - Validar que el Unique user Id\", function(){",
+							"    pm.expect(response.account.uuid).to.be.eq(uniqueUserId);",
+							"});",
+							"",
+							"pm.test(\"Test - Validar cuenta de usuario actualizado\", function(){",
+							"    pm.expect(response.account.account_id).to.be.eq(cuenta);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "tag:scmcoord.com,2013:api {{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "accept-language",
+						"value": "es",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"account\":{\"password\":\"{{new_password}}\"}}"
+				},
+				"url": {
+					"raw": "https://{{base_url}}/nga/api/v1{{userAccount}}?lang=es",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"nga",
+						"api",
+						"v1{{userAccount}}"
+					],
+					"query": [
+						{
+							"key": "accept",
+							"value": "application/json, text/plain, */*",
+							"disabled": true
+						},
+						{
+							"key": "auth",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "lang",
+							"value": "es"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener datos de usuario en segundamano",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9f9be0c9-9720-4e7e-ac2f-d391251a1064",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "ccece137-3e2e-4120-8f9a-93c952f148c4",
+						"exec": [
+							"var noticeAccount = pm.environment.get('noticeAccount');",
+							"var uniqueUserId = pm.environment.get('uuid');",
+							"console.log(\"Id del anuncio\", noticeAccount);",
+							"console.log(\"El UUID\", uniqueUserId);",
+							"",
+							"var response = pm.response.json();",
+							"console.log(\"el Response\", response);",
+							"",
+							"pm.test(\"Test - Validar que el response sea 200\", function (){",
+							"     setTimeout(() => {",
+							"    pm.expect(pm.response.code).to.equal(200);",
+							"    }, 3000);",
+							"});",
+							"",
+							"pm.test(\"Test - Validar que el response sea un jason\", function(){",
+							"    pm.response.to.be.json;",
+							"});",
+							"",
+							"pm.test(\"Test - Validar que el usuario no tiene transacciones\", function(){",
+							"    pm.expect(response.Transactions).to.be.empty;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "tag:scmcoord.com,2013:api {{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=utf-8",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "x-nga-source",
+						"value": "PHOENIX_DESKTOP",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{base_url}}/credits/v1{{userAccount}}",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"credits",
+						"v1{{userAccount}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizas direccion de usuario",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "494b8357-5cb7-478d-9c39-e4464782d631",
+						"exec": [
+							"// console.log(\"Nro Telefono\", (_.random(11111111,9999999999)) );",
+							"// pm.environment.set(\"phone\", (_.random(11111111,9999999999)));",
+							"",
+							"texto = Math.random().toString(36).substring(2,15)+Math.random().toString(36).substring(2,15);",
+							"const subject = \"\"+texto;",
+							"",
+							"console.log(\"Texto\", texto);",
+							"console.log(\"subject\", subject);",
+							"pm.environment.set(\"secondName\", subject);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "24fa68cc-f17c-42f5-86d5-15e1529784e4",
+						"exec": [
+							"var cuenta = pm.environment.get('userAccount');",
+							"var uniqueUserId = pm.environment.get('uuid');",
+							"console.log(\"El UUID\", uniqueUserId);",
+							"console.log(\"AccountId user\", cuenta);",
+							"",
+							"var response = pm.response.json();",
+							"console.log(\"el Response\", response);",
+							"",
+							"pm.test(\"Test - Validar que el response sea 200\", function (){",
+							"     setTimeout(() => {",
+							"    pm.expect(pm.response.code).to.equal(200);",
+							"    }, 3000);",
+							"});",
+							"",
+							"pm.test(\"Test - Validar que el response sea un jason\", function(){",
+							"    pm.response.to.be.json;",
+							"});",
+							"",
+							"pm.test(\"Test - Validar que el Unique user Id\", function(){",
+							"    pm.expect(response.account.uuid).to.be.eq(uniqueUserId);",
+							"});",
+							"",
+							"pm.test(\"Test - Validar cuenta de usuario actualizado\", function(){",
+							"    pm.expect(response.account.account_id).to.be.eq(cuenta);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "tag:scmcoord.com,2013:api {{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "accept-language",
+						"value": "es",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"account\":{\"name\":\"{{name}} {{secondName}}\",\"phone\":\"{{phone}}\",\"locations\":[{\"code\":\"3\",\"key\":\"region\",\"label\":\"Aguascalientes\",\"locations\":[{\"code\":\"36\",\"key\":\"municipality\",\"label\":\"Asientos\"}]}],\"professional\":false,\"phone_hidden\":false}}"
+				},
+				"url": {
+					"raw": "https://{{base_url}}/nga/api/v1{{userAccount}}",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"nga",
+						"api",
+						"v1{{userAccount}}"
+					],
+					"query": [
+						{
+							"key": "accept",
+							"value": "application/json, text/plain, */*",
+							"disabled": true
+						},
+						{
+							"key": "auth",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar Anuncio en segundamano",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "fbd0c41f-083c-4528-a65a-5e72456148b3",
+						"exec": [
+							"var baseUrl = pm.environment.get('base_url');",
+							"var tokenUser = pm.environment.get('token_user');",
+							"",
+							"",
+							"var noticeAccount = pm.environment.get('noticeAccount');",
+							"console.log(\"Id del anuncio\", noticeAccount);",
+							"",
+							"",
+							"/*let getTokenRequest = {",
+							"    method: 'POST',",
+							"    url: `https://${baseUrl}/nga/api/v1.1/private/accounts`,",
+							"    header: { ",
+							"        Authorization: tokenUser},",
+							"};",
+							"",
+							"pm.sendRequest(getTokenRequest, function(err, res){",
+							"    console.log(err ? err : res.json());",
+							"    var response = res.json();",
+							"    //theToken = response.access_token;",
+							"    //pm.environment.set('access_token', theToken);",
+							"   // pm.variables.set('access_token', theToken);",
+							"    ",
+							"});*/"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "7afd9631-5357-41be-92ed-408f1bef54d1",
+						"exec": [
+							"pm.test(\"Test - Validar que el response sea 201\", function (){",
+							"     setTimeout(() => {",
+							"    pm.expect(pm.response.code).to.equal(201);",
+							"    }, 3000);",
+							"});",
+							"",
+							"pm.test(\"Test - Validar que el response sea un jason\", function(){",
+							"    pm.response.to.be.json;",
+							"});",
+							"",
+							"pm.test(\"Test - Validar que action_id contenga el id de cuenta de usuario \", function(){",
+							"    var noticeAccount = pm.environment.get('noticeAccount');",
+							"    var adIdString = pm.response.json().ad.ad_id;",
+							"    ",
+							"    console.log(\" el noticeAccount\", adIdString.split('/')[5]);",
+							"    pm.expect(adIdString.split('/')[5]).to.include(noticeAccount);",
+							"    ",
+							"});",
+							"",
+							"pm.test(\"Test - Validar que action_type sea 'edit' \", function(){",
+							"   pm.expect(pm.response.json().action.action_type).to.be.eq(\"edit\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "tag:scmcoord.com,2013:api {{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "x-nga-source",
+						"value": "PHOENIX_DESKTOP",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"ad\":{\"locations\":[{\"code\":\"11\",\"key\":\"region\",\"label\":\"Ciudad de México\",\"locations\":[{\"code\":\"300\",\"key\":\"municipality\",\"label\":\"Miguel Hidalgo\",\"locations\":[{\"code\":\"8086\",\"key\":\"area\",\"label\":\"Anzures\"}]}]}],\"subject\":\"Estetica mascot {{subjectAnunce}}\",\"body\":\"Engrie a tu mascota como si fuera para ud mismo traerle a boby\",\"category\":{\"code\":\"8223\"},\"images\":[],\"price\":{\"currency\":\"MXN\",\"price_value\":30},\"ad_details\":{},\"phone_hidden\":1,\"type\":{\"code\":\"s\",\"label\":\"Vendo\"},\"adId\":\"{{noticeAccount}}\"},\"category_suggestion\":false,\"commit\":true} "
+				},
+				"url": {
+					"raw": "https://{{base_url}}/nga/api/v1.7{{userAccount}}/klfst/{{noticeAccount}}/actions?lang=es",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"nga",
+						"api",
+						"v1.7{{userAccount}}",
+						"klfst",
+						"{{noticeAccount}}",
+						"actions"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "es"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Anuncio en segundamano",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "8c61341a-aa99-4627-b10e-d13a97c662d6",
+						"exec": [
+							"var baseUrl = pm.environment.get('base_url');",
+							"var tokenUser = pm.environment.get('token_user');",
+							"var noticia = pm.environment.get('noticeAccount');",
+							"console.log(\"Id de la noticia a eliinar:\",noticia );",
+							"",
+							"let getTokenRequest = {",
+							"    method: 'POST',",
+							"    url: `https://${baseUrl}/nga/api/v1.1/private/accounts`,",
+							"    header: { ",
+							"        Authorization: tokenUser},",
+							"};",
+							"",
+							"/*pm.sendRequest(getTokenRequest, function(err, res){",
+							"    console.log(err ? err : res.json());",
+							"    var response = res.json();",
+							"    //theToken = response.access_token;",
+							"    //pm.environment.set('access_token', theToken);",
+							"    //pm.variables.set('access_token', theToken);",
+							"    ",
+							"});*/"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "0c9102f3-c9ea-4c7d-9d08-5ad11ec3a407",
+						"exec": [
+							"pm.test(\"Test - Validar que el response sea 200\", function (){",
+							"    setTimeout(() => {",
+							"    pm.expect(pm.response.code).to.equal(200);",
+							"    }, 3000);",
+							"});",
+							"",
+							"pm.test(\"Test - Validar que el response sea un jason\", function(){",
+							"    pm.response.to.be.json;",
+							"});",
+							"",
+							"pm.test(\"Test - Validar que action_type sea 'delete' \", function(){",
+							"   pm.expect(pm.response.json().action.action_type).to.be.eq(\"delete\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "tag:scmcoord.com,2013:api {{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "x-nga-source",
+						"value": "PHOENIX_DESKTOP",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"delete_reason\":{\"code\":\"5\"}}"
+				},
+				"url": {
+					"raw": "https://{{base_url}}/nga/api/v1.7{{userAccount}}/klfst/{{noticeAccount}}",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"nga",
+						"api",
+						"v1.7{{userAccount}}",
+						"klfst",
+						"{{noticeAccount}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "d1dcee7c-2503-4cf9-814e-10ffb1b97690",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "260c3ecc-27c5-45e1-b8f8-8400aa889812",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "4730f267-8f94-4260-a709-ca265d4bf08d",
+			"key": "mare",
+			"value": "webapi.segundamano.mx",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

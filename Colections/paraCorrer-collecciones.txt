@@ -1,0 +1,25 @@
+sudo npm install -g n
+
+npm install -g n
+nvm ls-remote
+nvm install v10.9.0
+npm install newman
+
+- exportar la coleccion y el ambiente desde postman
+- Ubicarse en el directorio
+- newman run tucolection
+- con iteraciones: newman run ProyectoSegundaMano.postman_collection.json  -e PROD.postman_environment.json -n 2
+- con delay : newman run ProyectoSegundaMano.postman_collection.json  -e PROD.postman_environment.json --delay-request 10
+- con timeout: newman run ProyectoSegundaMano.postman_collection.json  -e PROD.postman_environment.json --timeout-request 10
+- timeout con color : newman run ProyectoSegundaMano.postman_collection.json  -e PROD.postman_environment.json --timeout-request 150 --color off
+- iteraciones : newman run ProyectoSegundaMano.postman_collection.json -n 5 -e PROD.postman_environment.json 
+- con bail report : newman run ProyectoSegundaMano.postman_collection.json -e PROD.postman_environment.json --bail newman
+- reporte html: newman run ProyectoSegundaMano.postman_collection.json -e PROD.postman_environment.json -r reporte.html
+
+== instalar html reporter dentro del directorio
+- npm install -g newman-reporter-html :::>>> + newman-reporter-html@1.0.5 newman-reporter-html@1.0.5
+- npm install -g newman@4
+- correr tu prueba:  newman run ProyectoSegundaMano.postman_collection.json -e PROD.postman_environment.json -r html
+
+
+1:08:00
