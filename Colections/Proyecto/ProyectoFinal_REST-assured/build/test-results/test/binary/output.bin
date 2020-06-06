@@ -1,0 +1,329 @@
+Request method:	POST
+IRequest URI:	https://webapi.segundamano.mx/nga/api/v1.1/private/accounts
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+WHeaders:		Authorization=Basic dmVudGFzXzcuNzYxMDIwODQ1MDMwNDFAdmVudGFzLm5ldDoyMDcyOQ==
+				Accept=*/*
+0				Content-Type=text/plain; charset=ISO-8859-1
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+;{"account":{"email":"ventas_7.76102084503041@ventas.net"}}
+?This is token: mc1x3c4e139123fb16e41902941e920e502e0d47b2e0_v2
+*This is urlId: /private/accounts/10654090
+Getting [3]10654090
+3This is uuid: 719bee87-d0cb-46d0-9f23-3fb12366e6c1
+*This is urlId: /private/accounts/10654090
+/This is original Name: ventas_7.76102084503041
+1This is original Name: tag:scmcoord.com,2013:api
+5This is newNameUser: Johanna ventas_7.76102084503041
+This is the phone: 1000098635
+Request method:	POST
+`Request URI:	https://webapi.segundamano.mx/nga/api/v1.7/private/accounts/10654090/klfst?lang=es
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+bHeaders:		Authorization=tag:scmcoord.com,2013:api mc1x3c4e139123fb16e41902941e920e502e0d47b2e0_v2
+!				x-nga-source=PHOENIX_DESKTOP
+				Accept=*/*
+1				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "ad": {
+        "locations": [
+            {
+                "code": "11",
+!                "key": "region",
+.                "label": "Ciudad de M√©xico",
+                "locations": [
+                    {
+'                        "code": "300",
+/                        "key": "municipality",
+3                        "label": "Miguel Hidalgo",
+'                        "locations": [
+                            {
+0                                "code": "8086",
+/                                "key": "area",
+3                                "label": "Anzures"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+-        "subject": "Estetica mascot  44752",
+4        "body": "Servicios generales tus mascotas",
+        "category": {
+            "code": "8223"
+        },
+        "images": [
+            
+        ],
+        "price": {
+            "currency": "mxn",
+            "price_value": 18
+        },
+        "ad_details": {
+            
+        },
+        "phone_hidden": 1,
+        "plate": "",
+        "vin": "",
+        "type": {
+            "code": "s",
+            "label": ""
+        },
+1        "ad": "Servicios generales tus mascotas"
+    },
+"    "category_suggestion": false,
+    "commit": true
+}
+Request method:	GET
+WRequest URI:	https://webapi.segundamano.mx/nga/api/v1.1%2F%2Fprivate/accounts/10654090
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+bHeaders:		Authorization=tag:scmcoord.com,2013:api mc1x3c4e139123fb16e41902941e920e502e0d47b2e0_v2
+				Accept=*/*
+1				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+Request method:	PATCH
+PRequest URI:	https://webapi.segundamano.mx/nga/api/v1/private/accounts/10654090
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+bHeaders:		Authorization=tag:scmcoord.com,2013:api mc1x3c4e139123fb16e41902941e920e502e0d47b2e0_v2
+				accept-language=es
+-				Accept=application/json, text/plain, */*
+0				Content-Type=application/json;charset=UTF-8
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "account": {
+        "password": "52145"
+    }
+}
+Request method:	GET
+PRequest URI:	https://webapi.segundamano.mx/credits/v1/private/accounts/10654090
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+bHeaders:		Authorization=tag:scmcoord.com,2013:api mc1x13a2bcf1b2c41dfa65a46ae782f8d29107e05404_v2
+-				Accept=application/json, text/plain, */*
+1				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+Request method:	GET
+rRequest URI:	https://webapi.segundamano.mx/nga/api/v1/api/hal/719bee87-d0cb-46d0-9f23-3fb12366e6c1/conversations/
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+bHeaders:		Authorization=tag:scmcoord.com,2013:api mc1x13a2bcf1b2c41dfa65a46ae782f8d29107e05404_v2
+-				Accept=application/json, text/plain, */*
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+	Request method:	GET
+	^Request URI:	https://webapi.segundamano.mx/nga/api/v1/private/accounts/10654090/stats?lang=es
+	Proxy:			<none>
+	Request params:	<none>
+	Query params:	<none>
+	Form params:	<none>
+	Path params:	<none>
+	bHeaders:		Authorization=tag:scmcoord.com,2013:api mc1x13a2bcf1b2c41dfa65a46ae782f8d29107e05404_v2
+	-				Accept=application/json, text/plain, */*
+	1				Content-Type=application/json; charset=UTF-8
+	Cookies:		<none>
+	Multiparts:		<none>
+	Body:			<none>
+
+ Este es el Anuncio Id: 67146724
+
+Request method:	POST
+
+qRequest URI:	https://webapi.segundamano.mx/nga/api/v1.7/private/accounts/10654090/klfst/67146724/actions?lang=es
+
+Proxy:			<none>
+
+Request params:	<none>
+
+Query params:	<none>
+
+Form params:	<none>
+
+Path params:	<none>
+
+bHeaders:		Authorization=tag:scmcoord.com,2013:api mc1x13a2bcf1b2c41dfa65a46ae782f8d29107e05404_v2
+
+!				x-nga-source=PHOENIX_DESKTOP
+
+-				Accept=application/json, text/plain, */*
+
+1				Content-Type=application/json; charset=UTF-8
+
+Cookies:		<none>
+
+Multiparts:		<none>
+
+Body:
+
+{
+
+    "ad": {
+
+        "locations": [
+
+            {
+
+                "code": "11",
+
+!                "key": "region",
+
+.                "label": "Ciudad de M√©xico",
+
+                "locations": [
+
+                    {
+
+'                        "code": "300",
+
+/                        "key": "municipality",
+
+3                        "label": "Miguel Hidalgo",
+
+'                        "locations": [
+
+                            {
+
+0                                "code": "8086",
+
+/                                "key": "area",
+
+3                                "label": "Anzures"
+
+                            }
+
+                        ]
+
+                    }
+
+                ]
+
+            }
+
+        ],
+
+,        "subject": "Estetica mascot 35492",
+
+R        "body": "Engrie a tu mascota como si fuera para ud mismo traerle a boby",
+
+        "category": {
+
+            "code": "8223"
+
+        },
+
+        "images": [
+
+            
+
+        ],
+
+        "price": {
+
+            "currency": "MXN",
+
+            "price_value": 30
+
+        },
+
+        "ad_details": {
+
+            
+
+        },
+
+        "phone_hidden": 1,
+
+        "type": {
+
+            "code": "s",
+
+            "label": "Vendo"
+
+        },
+
+        "adId": "67146724"
+
+    },
+
+"    "category_suggestion": false,
+
+    "commit": true
+
+}
+Request method:	POST
+?Request URI:	https://webapi.segundamano.mx/addresses/v1/create
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+èHeaders:		Authorization=Basic NzE5YmVlODctZDBjYi00NmQwLTlmMjMtM2ZiMTIzNjZlNmMxOm1jMXgxM2EyYmNmMWIyYzQxZGZhNjVhNDZhZTc4MmY4ZDI5MTA3ZTA1NDA0X3Yy
+				Accept=*/*
+G				Content-Type=application/x-www-form-urlencoded; charset=ISO-8859-1
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+§contact=Mi direccion 13&phone=5198579735&rfc=VECM810820V59&zipCode=01003&exteriorInfo=Calle Rivadavia13&interiorInfo=172&region=11&municipality=300&alias=Mi Miguel
+Request method:	PUT
+dRequest URI:	https://webapi.segundamano.mx/addresses/v1/modify/576bc00a-9f14-11ea-9d4b-cb8c79ccb223
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+èHeaders:		Authorization=Basic NzE5YmVlODctZDBjYi00NmQwLTlmMjMtM2ZiMTIzNjZlNmMxOm1jMXgxM2EyYmNmMWIyYzQxZGZhNjVhNDZhZTc4MmY4ZDI5MTA3ZTA1NDA0X3Yy
+				Accept=*/*
+G				Content-Type=application/x-www-form-urlencoded; charset=ISO-8859-1
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+§contact=Mi direccion 13&phone=5198579735&rfc=VECM810820V59&zipCode=01003&exteriorInfo=Calle Rivadavia13&interiorInfo=172&region=11&municipality=300&alias=Mi Miguel
+Request method:	DELETE
+_Request URI:	https://webapi.segundamano.mx/nga/api/v1/private/accounts/10654090/klfst/67146724
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+bHeaders:		Authorization=tag:scmcoord.com,2013:api mc1x13a2bcf1b2c41dfa65a46ae782f8d29107e05404_v2
+-				Accept=application/json, text/plain, */*
+0				Content-Type=application/json;charset=UTF-8
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "delete_reason": {
+        "code": "5"
+    }
+}

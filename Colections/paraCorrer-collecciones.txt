@@ -1,8 +1,9 @@
 sudo npm install -g n
-
+==== newman: required node version >=10
 npm install -g n
-nvm ls-remote
-nvm install v10.9.0
+- npm install -g newman@4
+npm ls -remote
+npm install v10.9.0
 npm install newman
 
 - exportar la coleccion y el ambiente desde postman
@@ -23,3 +24,6 @@ npm install newman
 
 
 1:08:00
+
+==== newman: required node version >=10
+

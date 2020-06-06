@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class suitTest.CreateAnnouncementEndToEnd</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class suitTest.CreateAnnouncementEndToEnd</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/suitTest.html">suitTest</a> &gt; CreateAnnouncementEndToEnd</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">12</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">1</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">22.149s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox failures" id="successRate">
+<div class="percent">91%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Failed tests</a>
+</li>
+<li>
+<a href="#tab1">Tests</a>
+</li>
+<li>
+<a href="#tab2">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="t3_deleteAnnouncement"></a>
+<h3 class="failures">t3_deleteAnnouncement</h3>
+<span class="code">
+<pre>java.lang.AssertionError: expected:&lt;200&gt; but was:&lt;403&gt;
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at org.junit.Assert.assertEquals(Assert.java:631)
+	at suitTest.CreateAnnouncementEndToEnd.t3_deleteAnnouncement(CreateAnnouncementEndToEnd.java:304)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:118)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:182)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:164)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:412)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">t01_creteUser</td>
+<td class="success">3.557s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">t02_updateUserPhone</td>
+<td class="success">1.358s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">t03_createAnnouncement</td>
+<td class="success">4.519s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">t04_getUserDataUpdated</td>
+<td class="success">0.840s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">t05_updateUserPassword</td>
+<td class="success">2.433s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">t06_getUseBalance</td>
+<td class="success">0.705s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">t07_getUserMessage</td>
+<td class="success">1.136s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">t08_searchAnnouncementCreted</td>
+<td class="success">0.996s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">t09_editAnnouncementCreted</td>
+<td class="success">4.211s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">t1_addUserAddress</td>
+<td class="success">0.919s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">t2_modifyUserAddressAdd</td>
+<td class="success">0.624s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="failures">t3_deleteAnnouncement</td>
+<td class="failures">0.851s</td>
+<td class="failures">failed</td>
+</tr>
+</table>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>Request method:	POST
+Request URI:	https://webapi.segundamano.mx/nga/api/v1.1/private/accounts
+Proxy:			&lt;none&gt;
+Request params:	&lt;none&gt;
+Query params:	&lt;none&gt;
+Form params:	&lt;none&gt;
+Path params:	&lt;none&gt;
+Headers:		Authorization=Basic dmVudGFzXzcuNzYxMDIwODQ1MDMwNDFAdmVudGFzLm5ldDoyMDcyOQ==
+				Accept=*/*
+				Content-Type=text/plain; charset=ISO-8859-1
+Cookies:		&lt;none&gt;
+Multiparts:		&lt;none&gt;
+Body:
+{&quot;account&quot;:{&quot;email&quot;:&quot;ventas_7.76102084503041@ventas.net&quot;}}
+This is token: mc1x3c4e139123fb16e41902941e920e502e0d47b2e0_v2
+This is urlId: /private/accounts/10654090
+Getting [3]10654090
+This is uuid: 719bee87-d0cb-46d0-9f23-3fb12366e6c1
+This is urlId: /private/accounts/10654090
+This is original Name: ventas_7.76102084503041
+This is original Name: tag:scmcoord.com,2013:api
+This is newNameUser: Johanna ventas_7.76102084503041
+This is the phone: 1000098635
+Request method:	POST
+Request URI:	https://webapi.segundamano.mx/nga/api/v1.7/private/accounts/10654090/klfst?lang=es
+Proxy:			&lt;none&gt;
+Request params:	&lt;none&gt;
+Query params:	&lt;none&gt;
+Form params:	&lt;none&gt;
+Path params:	&lt;none&gt;
+Headers:		Authorization=tag:scmcoord.com,2013:api mc1x3c4e139123fb16e41902941e920e502e0d47b2e0_v2
+				x-nga-source=PHOENIX_DESKTOP
+				Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		&lt;none&gt;
+Multiparts:		&lt;none&gt;
+Body:
+{
+    &quot;ad&quot;: {
+        &quot;locations&quot;: [
+            {
+                &quot;code&quot;: &quot;11&quot;,
+                &quot;key&quot;: &quot;region&quot;,
+                &quot;label&quot;: &quot;Ciudad de México&quot;,
+                &quot;locations&quot;: [
+                    {
+                        &quot;code&quot;: &quot;300&quot;,
+                        &quot;key&quot;: &quot;municipality&quot;,
+                        &quot;label&quot;: &quot;Miguel Hidalgo&quot;,
+                        &quot;locations&quot;: [
+                            {
+                                &quot;code&quot;: &quot;8086&quot;,
+                                &quot;key&quot;: &quot;area&quot;,
+                                &quot;label&quot;: &quot;Anzures&quot;
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        &quot;subject&quot;: &quot;Estetica mascot  44752&quot;,
+        &quot;body&quot;: &quot;Servicios generales tus mascotas&quot;,
+        &quot;category&quot;: {
+            &quot;code&quot;: &quot;8223&quot;
+        },
+        &quot;images&quot;: [
+            
+        ],
+        &quot;price&quot;: {
+            &quot;currency&quot;: &quot;mxn&quot;,
+            &quot;price_value&quot;: 18
+        },
+        &quot;ad_details&quot;: {
+            
+        },
+        &quot;phone_hidden&quot;: 1,
+        &quot;plate&quot;: &quot;&quot;,
+        &quot;vin&quot;: &quot;&quot;,
+        &quot;type&quot;: {
+            &quot;code&quot;: &quot;s&quot;,
+            &quot;label&quot;: &quot;&quot;
+        },
+        &quot;ad&quot;: &quot;Servicios generales tus mascotas&quot;
+    },
+    &quot;category_suggestion&quot;: false,
+    &quot;commit&quot;: true
+}
+Request method:	GET
+Request URI:	https://webapi.segundamano.mx/nga/api/v1.1%2F%2Fprivate/accounts/10654090
+Proxy:			&lt;none&gt;
+Request params:	&lt;none&gt;
+Query params:	&lt;none&gt;
+Form params:	&lt;none&gt;
+Path params:	&lt;none&gt;
+Headers:		Authorization=tag:scmcoord.com,2013:api mc1x3c4e139123fb16e41902941e920e502e0d47b2e0_v2
+				Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		&lt;none&gt;
+Multiparts:		&lt;none&gt;
+Body:			&lt;none&gt;
+Request method:	PATCH
+Request URI:	https://webapi.segundamano.mx/nga/api/v1/private/accounts/10654090
+Proxy:			&lt;none&gt;
+Request params:	&lt;none&gt;
+Query params:	&lt;none&gt;
+Form params:	&lt;none&gt;
+Path params:	&lt;none&gt;
+Headers:		Authorization=tag:scmcoord.com,2013:api mc1x3c4e139123fb16e41902941e920e502e0d47b2e0_v2
+				accept-language=es
+				Accept=application/json, text/plain, */*
+				Content-Type=application/json;charset=UTF-8
+Cookies:		&lt;none&gt;
+Multiparts:		&lt;none&gt;
+Body:
+{
+    &quot;account&quot;: {
+        &quot;password&quot;: &quot;52145&quot;
+    }
+}
+Request method:	GET
+Request URI:	https://webapi.segundamano.mx/credits/v1/private/accounts/10654090
+Proxy:			&lt;none&gt;
+Request params:	&lt;none&gt;
+Query params:	&lt;none&gt;
+Form params:	&lt;none&gt;
+Path params:	&lt;none&gt;
+Headers:		Authorization=tag:scmcoord.com,2013:api mc1x13a2bcf1b2c41dfa65a46ae782f8d29107e05404_v2
+				Accept=application/json, text/plain, */*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		&lt;none&gt;
+Multiparts:		&lt;none&gt;
+Body:			&lt;none&gt;
+Request method:	GET
+Request URI:	https://webapi.segundamano.mx/nga/api/v1/api/hal/719bee87-d0cb-46d0-9f23-3fb12366e6c1/conversations/
+Proxy:			&lt;none&gt;
+Request params:	&lt;none&gt;
+Query params:	&lt;none&gt;
+Form params:	&lt;none&gt;
+Path params:	&lt;none&gt;
+Headers:		Authorization=tag:scmcoord.com,2013:api mc1x13a2bcf1b2c41dfa65a46ae782f8d29107e05404_v2
+				Accept=application/json, text/plain, */*
+Cookies:		&lt;none&gt;
+Multiparts:		&lt;none&gt;
+Body:			&lt;none&gt;
+Request method:	GET
+Request URI:	https://webapi.segundamano.mx/nga/api/v1/private/accounts/10654090/stats?lang=es
+Proxy:			&lt;none&gt;
+Request params:	&lt;none&gt;
+Query params:	&lt;none&gt;
+Form params:	&lt;none&gt;
+Path params:	&lt;none&gt;
+Headers:		Authorization=tag:scmcoord.com,2013:api mc1x13a2bcf1b2c41dfa65a46ae782f8d29107e05404_v2
+				Accept=application/json, text/plain, */*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		&lt;none&gt;
+Multiparts:		&lt;none&gt;
+Body:			&lt;none&gt;
+Este es el Anuncio Id: 67146724
+Request method:	POST
+Request URI:	https://webapi.segundamano.mx/nga/api/v1.7/private/accounts/10654090/klfst/67146724/actions?lang=es
+Proxy:			&lt;none&gt;
+Request params:	&lt;none&gt;
+Query params:	&lt;none&gt;
+Form params:	&lt;none&gt;
+Path params:	&lt;none&gt;
+Headers:		Authorization=tag:scmcoord.com,2013:api mc1x13a2bcf1b2c41dfa65a46ae782f8d29107e05404_v2
+				x-nga-source=PHOENIX_DESKTOP
+				Accept=application/json, text/plain, */*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		&lt;none&gt;
+Multiparts:		&lt;none&gt;
+Body:
+{
+    &quot;ad&quot;: {
+        &quot;locations&quot;: [
+            {
+                &quot;code&quot;: &quot;11&quot;,
+                &quot;key&quot;: &quot;region&quot;,
+                &quot;label&quot;: &quot;Ciudad de México&quot;,
+                &quot;locations&quot;: [
+                    {
+                        &quot;code&quot;: &quot;300&quot;,
+                        &quot;key&quot;: &quot;municipality&quot;,
+                        &quot;label&quot;: &quot;Miguel Hidalgo&quot;,
+                        &quot;locations&quot;: [
+                            {
+                                &quot;code&quot;: &quot;8086&quot;,
+                                &quot;key&quot;: &quot;area&quot;,
+                                &quot;label&quot;: &quot;Anzures&quot;
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        &quot;subject&quot;: &quot;Estetica mascot 35492&quot;,
+        &quot;body&quot;: &quot;Engrie a tu mascota como si fuera para ud mismo traerle a boby&quot;,
+        &quot;category&quot;: {
+            &quot;code&quot;: &quot;8223&quot;
+        },
+        &quot;images&quot;: [
+            
+        ],
+        &quot;price&quot;: {
+            &quot;currency&quot;: &quot;MXN&quot;,
+            &quot;price_value&quot;: 30
+        },
+        &quot;ad_details&quot;: {
+            
+        },
+        &quot;phone_hidden&quot;: 1,
+        &quot;type&quot;: {
+            &quot;code&quot;: &quot;s&quot;,
+            &quot;label&quot;: &quot;Vendo&quot;
+        },
+        &quot;adId&quot;: &quot;67146724&quot;
+    },
+    &quot;category_suggestion&quot;: false,
+    &quot;commit&quot;: true
+}
+Request method:	POST
+Request URI:	https://webapi.segundamano.mx/addresses/v1/create
+Proxy:			&lt;none&gt;
+Request params:	&lt;none&gt;
+Query params:	&lt;none&gt;
+Form params:	&lt;none&gt;
+Path params:	&lt;none&gt;
+Headers:		Authorization=Basic NzE5YmVlODctZDBjYi00NmQwLTlmMjMtM2ZiMTIzNjZlNmMxOm1jMXgxM2EyYmNmMWIyYzQxZGZhNjVhNDZhZTc4MmY4ZDI5MTA3ZTA1NDA0X3Yy
+				Accept=*/*
+				Content-Type=application/x-www-form-urlencoded; charset=ISO-8859-1
+Cookies:		&lt;none&gt;
+Multiparts:		&lt;none&gt;
+Body:
+contact=Mi direccion 13&amp;phone=5198579735&amp;rfc=VECM810820V59&amp;zipCode=01003&amp;exteriorInfo=Calle Rivadavia13&amp;interiorInfo=172&amp;region=11&amp;municipality=300&amp;alias=Mi Miguel
+Request method:	PUT
+Request URI:	https://webapi.segundamano.mx/addresses/v1/modify/576bc00a-9f14-11ea-9d4b-cb8c79ccb223
+Proxy:			&lt;none&gt;
+Request params:	&lt;none&gt;
+Query params:	&lt;none&gt;
+Form params:	&lt;none&gt;
+Path params:	&lt;none&gt;
+Headers:		Authorization=Basic NzE5YmVlODctZDBjYi00NmQwLTlmMjMtM2ZiMTIzNjZlNmMxOm1jMXgxM2EyYmNmMWIyYzQxZGZhNjVhNDZhZTc4MmY4ZDI5MTA3ZTA1NDA0X3Yy
+				Accept=*/*
+				Content-Type=application/x-www-form-urlencoded; charset=ISO-8859-1
+Cookies:		&lt;none&gt;
+Multiparts:		&lt;none&gt;
+Body:
+contact=Mi direccion 13&amp;phone=5198579735&amp;rfc=VECM810820V59&amp;zipCode=01003&amp;exteriorInfo=Calle Rivadavia13&amp;interiorInfo=172&amp;region=11&amp;municipality=300&amp;alias=Mi Miguel
+Request method:	DELETE
+Request URI:	https://webapi.segundamano.mx/nga/api/v1/private/accounts/10654090/klfst/67146724
+Proxy:			&lt;none&gt;
+Request params:	&lt;none&gt;
+Query params:	&lt;none&gt;
+Form params:	&lt;none&gt;
+Path params:	&lt;none&gt;
+Headers:		Authorization=tag:scmcoord.com,2013:api mc1x13a2bcf1b2c41dfa65a46ae782f8d29107e05404_v2
+				Accept=application/json, text/plain, */*
+				Content-Type=application/json;charset=UTF-8
+Cookies:		&lt;none&gt;
+Multiparts:		&lt;none&gt;
+Body:
+{
+    &quot;delete_reason&quot;: {
+        &quot;code&quot;: &quot;5&quot;
+    }
+}
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 6.1</a> at May 26, 2020, 12:47:11 AM</p>
+</div>
+</div>
+</body>
+</html>
